@@ -1,0 +1,8 @@
+RewriteEngine On
+
+# Redirect all requests to the Node.js application
+RewriteRule ^(.*)$ http://localhost:5001/$1 [P,L]
+
+# Handle static files directly
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]

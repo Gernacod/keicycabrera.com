@@ -1,0 +1,278 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Elementor Global Color Variables */
+:root {
+    --e-global-color-primary: #0E5587;
+    --e-global-color-secondary: #d6c072;
+    --e-global-color-text: #7A7A7A;
+    --e-global-color-accent: #23a096;
+
+    /* Keicy Palette */
+    --keicy-sand: #d9ae7d;
+    --keicy-gold: #d6c072;
+    --keicy-navy: #0E5587;
+    --keicy-teal: #1a7383;
+    --keicy-green: #23a096;
+}
+
+/* Global button/link styles removed to prevent conflicts and unwanted borders */
+
+/* FAQ Accordion overrides */
+/* CSS Rules removed as per user request to fix Accordion hover issues */
+
+/* Custom + to X animation for solution accordions */
+.accordion-plus {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.accordion-plus::before,
+.accordion-plus::after {
+    content: '';
+    position: absolute;
+    background-color: currentColor;
+    border-radius: 2px;
+    transition: transform 0.3s ease;
+}
+
+/* Vertical line */
+.accordion-plus::before {
+    width: 3px;
+    height: 20px;
+}
+
+/* Horizontal line */
+.accordion-plus::after {
+    width: 20px;
+    height: 3px;
+}
+
+/* When expanded: rotate to X */
+[data-state="open"] .accordion-plus::before {
+    transform: rotate(90deg);
+}
+
+[data-state="open"] .accordion-plus::after {
+    transform: rotate(90deg);
+}
+
+/* Default Next.js styles cleared to preserve Legacy Site design */
+
+
+
+@layer base {
+    :root {
+        --background: 0 0% 100%;
+        --foreground: 0 0% 3.9%;
+        --card: 0 0% 100%;
+        --card-foreground: 0 0% 3.9%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 0 0% 3.9%;
+        --primary: 240 5.9% 10%;
+        --primary-foreground: 0 0% 98%;
+        --secondary: 240 4.8% 95.9%;
+        --secondary-foreground: 240 5.9% 10%;
+        --muted: 240 4.8% 95.9%;
+        --muted-foreground: 240 3.8% 46.1%;
+        --accent: 240 4.8% 95.9%;
+        --accent-foreground: 240 5.9% 10%;
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 240 5.9% 90%;
+        --input: 240 5.9% 90%;
+        --ring: 240 5.9% 10%;
+        --chart-1: 12 76% 61%;
+        --chart-2: 173 58% 39%;
+        --chart-3: 197 37% 24%;
+        --chart-4: 43 74% 66%;
+        --chart-5: 27 87% 67%;
+        --radius: 0.5rem;
+        --sidebar-background: 0 0% 100%;
+        --sidebar-foreground: 240 5.3% 26.1%;
+        --sidebar-primary: 240 5.9% 10%;
+        --sidebar-primary-foreground: 0 0% 98%;
+        --sidebar-accent: 240 4.8% 95.9%;
+        --sidebar-accent-foreground: 240 5.9% 10%;
+        --sidebar-border: 240 5.9% 90%;
+        --sidebar-ring: 240 5.9% 10%;
+    }
+
+    .dark {
+        --background: 240 10% 3.9%;
+        --foreground: 0 0% 98%;
+        --card: 240 10% 3.9%;
+        --card-foreground: 0 0% 98%;
+        --popover: 240 10% 3.9%;
+        --popover-foreground: 0 0% 98%;
+        --primary: 0 0% 98%;
+        --primary-foreground: 240 5.9% 10%;
+        --secondary: 240 3.7% 15.9%;
+        --secondary-foreground: 0 0% 98%;
+        --muted: 240 3.7% 15.9%;
+        --muted-foreground: 240 5% 64.9%;
+        --accent: 240 3.7% 15.9%;
+        --accent-foreground: 0 0% 98%;
+        --destructive: 0 62.8% 30.6%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 240 3.7% 15.9%;
+        --input: 240 3.7% 15.9%;
+        --ring: 240 4.9% 83.9%;
+        --chart-1: 220 70% 50%;
+        --chart-2: 160 60% 45%;
+        --chart-3: 30 80% 55%;
+        --chart-4: 280 65% 60%;
+        --chart-5: 340 75% 55%;
+        --sidebar-background: 240 5.9% 10%;
+        --sidebar-foreground: 240 4.8% 95.9%;
+        --sidebar-primary: 0 0% 98%;
+        --sidebar-primary-foreground: 240 5.9% 10%;
+        --sidebar-accent: 240 3.7% 15.9%;
+        --sidebar-accent-foreground: 240 4.8% 95.9%;
+        --sidebar-border: 240 3.7% 15.9%;
+        --sidebar-ring: 240 4.9% 83.9%;
+    }
+}
+
+
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+    }
+}
+
+/* Override legacy WordPress/Elementor borders in the header */
+header *,
+.navbar *,
+[data-heroui-navbar] *,
+.dropdown-trigger * {
+    border: none;
+}
+
+/* Except for when we explicitly want it (scrolled state) */
+.border-b.border-slate-200 {
+    border-bottom: 1px solid #e2e8f0 !important;
+}
+
+/* Neutralize legacy button styles across the site, but protect our intentional designs */
+button:not([class*="bg-"]):not([data-sidebar]),
+[type="button"]:not([class*="bg-"]):not([data-sidebar]),
+[type="submit"]:not([class*="bg-"]):not([data-sidebar]) {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+/* Force neutral sidebar button colors to override WordPress CSS */
+[data-sidebar="menu-button"] {
+    background-color: transparent !important;
+    color: #404040 !important;
+    /* neutral-700 */
+}
+
+[data-sidebar="menu-button"]:hover,
+[data-sidebar="menu-button"][data-active="true"] {
+    background-color: #f5f5f5 !important;
+    /* neutral-100 */
+    color: #171717 !important;
+    /* neutral-900 */
+}
+
+/* Form Input Styling */
+input:not([type="submit"]):not([type="button"]),
+textarea,
+select {
+    border: none !important;
+    outline: none !important;
+    border-radius: 1rem !important;
+    background-color: #f8fafc !important;
+    /* light gray bg-gray-50 */
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+    transition: all 0.3s ease !important;
+}
+
+input:not([type="submit"]):not([type="button"]):focus,
+textarea:focus,
+select:focus {
+    background-color: #ffffff !important;
+    box-shadow: 0 0 0 2px rgba(24, 68, 118, 0.05) !important;
+    outline: 2px solid hsl(var(--primary)) !important;
+}
+
+/* Premium Button Style for Brand Blue */
+.btn-premium {
+    background: linear-gradient(135deg, #184476 0%, #0a2e5c 100%) !important;
+    color: white !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.5px !important;
+    text-transform: uppercase !important;
+    font-size: 0.95rem !important;
+    padding: 1.25rem 2.5rem !important;
+    border-radius: 1.25rem !important;
+    box-shadow: 0 10px 25px -5px rgba(24, 68, 118, 0.4) !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.75rem !important;
+    position: relative !important;
+    border: none !important;
+}
+
+.btn-premium:hover {
+    background: #d6c072 !important;
+    /* Gold hover from brand */
+    color: #184476 !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 15px 30px -5px rgba(214, 192, 114, 0.5) !important;
+}
+
+.btn-premium:active {
+    transform: translateY(0) !important;
+}
+
+.btn-premium i {
+    transition: transform 0.4s ease !important;
+}
+
+.btn-premium:hover i {
+    transform: translateX(5px) translateY(-5px) !important;
+}
+
+header button:hover,
+header button:focus,
+header [type="button"]:hover,
+header [type="button"]:focus,
+.dropdown-trigger button:hover,
+.dropdown-trigger button:focus,
+main button:not([class*="bg-"]):hover,
+main button:not([class*="bg-"]):focus {
+    background-color: transparent !important;
+    color: inherit !important;
+    box-shadow: none !important;
+    text-decoration: none !important;
+    border: none !important;
+}
+
+/* Re-apply valid styles for our brand buttons and active containers */
+header .bg-\[\#184476\]:hover {
+    background-color: #d6c072 !important;
+    color: white !important;
+}
+
+/* Ensure FAQ open state remains solid blue if needed, but without breaking transparency elsewhere */
+.faq-active {
+    background-color: #184476 !important;
+}

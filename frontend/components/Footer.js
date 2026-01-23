@@ -50,10 +50,10 @@ const Footer = () => {
                     <div className="flex flex-col items-center md:items-start">
                         <h3 className="text-xl font-bold mb-6">Cursos</h3>
                         <ul className="space-y-4 text-center md:text-left">
-                            <li><Link href="/cursos/diseno" className="text-white hover:underline transition-all">Curso de Diseño de Proyectos Sociales</Link></li>
-                            <li><Link href="/cursos/recaudaciondefondos" className="text-white hover:underline transition-all">Recaudación de Fondos para Proyectos Sociales</Link></li>
-                            <li><Link href="/cursos/gbr" className="text-white hover:underline transition-all">Introducción a la Gestión Basada en Resultados</Link></li>
-                            <li><Link href="/cursos/subedenivel" className="text-white hover:underline transition-all">Sube de Nivel en el Sector Humanitario y de Desarrollo</Link></li>
+                            <li><Link href="/cursosyclases" className="text-white hover:underline transition-all">Curso de Diseño de Proyectos Sociales</Link></li>
+                            <li><Link href="/cursosyclases" className="text-white hover:underline transition-all">Recaudación de Fondos para Proyectos Sociales</Link></li>
+                            <li><Link href="/cursosyclases" className="text-white hover:underline transition-all">Introducción a la Gestión Basada en Resultados</Link></li>
+                            <li><Link href="/cursosyclases" className="text-white hover:underline transition-all">Sube de Nivel en el Sector Humanitario y de Desarrollo</Link></li>
                         </ul>
                     </div>
 

@@ -2,7 +2,7 @@ import os
 import subprocess
 import time
 
-ignore_dirs = {'.git', 'node_modules', '.next', 'dist', 'build', 'coverage', '.cache', 'backend/uploads', '.npm-cache', '.npm'}
+ignore_dirs = {'.git', 'node_modules', '.next', 'dist', 'build', 'coverage', '.cache', 'backend/uploads', '.npm-cache', '.npm', 'lightgallery'}
 ignore_extensions = {'.log', '.DS_Store'}
 
 root = "."

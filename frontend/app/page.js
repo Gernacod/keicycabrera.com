@@ -1,4 +1,5 @@
 'use client';
+// Deployment trigger: 2026-01-23
 import React, { useState } from 'react';
 import useLinkInterceptor from '@/hooks/useLinkInterceptor';
 import Link from 'next/link';

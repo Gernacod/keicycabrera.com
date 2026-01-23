@@ -22,6 +22,11 @@ dist/
 # Logs
 *.log
 logs/
+.next_locked_garbage/
+node_modules_old/
+test-node.js
+*.backup
+.github-upload-sendEmail.js
 
 # Runtime data
 pids

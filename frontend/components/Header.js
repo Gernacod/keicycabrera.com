@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import {
     Navbar,
     NavbarBrand,
@@ -12,8 +12,7 @@ import {
     DropdownTrigger,
     DropdownMenu,
     DropdownItem,
-    Avatar,
-    User as HeroUser
+    Avatar
 } from "@heroui/react";
 import { useRouter, usePathname } from 'next/navigation';
 
@@ -42,8 +41,24 @@ const ChevronDown = ({ fill, size, ...props }) => {
 const Header = () => {
     const [user, setUser] = useState(null);
     const [isScrolled, setIsScrolled] = useState(false);
+    const [openDropdown, setOpenDropdown] = useState(null);
+    const closeTimeoutRef = useRef(null);
     const router = useRouter();
     const pathname = usePathname();
+
+    const handleMouseEnter = (label) => {
+        if (closeTimeoutRef.current) {
+            clearTimeout(closeTimeoutRef.current);
+            closeTimeoutRef.current = null;
+        }
+        setOpenDropdown(label);
+    };
+
+    const handleMouseLeave = () => {
+        closeTimeoutRef.current = setTimeout(() => {
+            setOpenDropdown(null);
+        }, 150);
+    };
 
     useEffect(() => {
         const handleScroll = () => {
@@ -134,18 +149,37 @@ const Header = () => {
 
                     if (isDropdown) {
                         return (
-                            <Dropdown key={link.href} placement="bottom" showArrow={false}>
-                                <NavbarItem>
+                            <Dropdown
+                                key={link.href}
+                                placement="bottom"
+                                showArrow={false}
+                                isOpen={openDropdown === link.label}
+                                onOpenChange={(isOpen) => {
+                                    if (isOpen) setOpenDropdown(link.label);
+                                }}
+                            >
+                                <NavbarItem
+                                    onMouseEnter={() => handleMouseEnter(link.label)}
+                                    onMouseLeave={handleMouseLeave}
+                                >
                                     <DropdownTrigger>
-                                        <div className="bg-transparent border-none border-0 !border-none p-0 m-0 outline-none ring-0">
+                                        <button
+                                            className="bg-transparent border-none p-0 outline-none appearance-none"
+                                            onClick={() => {
+                                                // Optional: Navigate on click if desired, or just let it toggle
+                                                // router.push(link.href);
+                                            }}
+                                        >
                                             {linkContent}
-                                        </div>
+                                        </button>
                                     </DropdownTrigger>
                                 </NavbarItem>
                                 <DropdownMenu
                                     aria-label={`${link.label} Submenu`}
                                     className={`${link.label === 'Consultorías' ? 'w-[320px]' : 'w-[380px]'} bg-white border border-slate-200 shadow-2xl rounded-2xl p-2 z-[9999]`}
                                     itemClassName="h-auto py-3 px-4 transition-all duration-200 data-[hover=true]:bg-slate-50 rounded-xl"
+                                    onMouseEnter={() => handleMouseEnter(link.label)}
+                                    onMouseLeave={handleMouseLeave}
                                 >
                                     {link.label === 'Consultorías' ? (
                                         <>

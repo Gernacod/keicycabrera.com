@@ -41,7 +41,7 @@ export default function HeroSection() {
             </div>
 
             {/* Right Image - Keicy Portrait */}
-            <div className="absolute bottom-0 right-[10%] md:right-[15%] lg:right-[20%] h-[90%] md:h-[95%] flex items-end justify-center pointer-events-none w-full max-w-[540px] pt-[120px]">
+            <div className="absolute bottom-0 right-[5%] md:right-[8%] lg:right-[10%] h-full flex items-end justify-center pointer-events-none w-full max-w-[720px] pt-[100px]">
                 <div className="relative w-full h-full">
                     <Image
                         src="/Keicy Portraits 2-8 1.png"

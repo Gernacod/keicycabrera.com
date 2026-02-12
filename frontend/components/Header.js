@@ -126,8 +126,8 @@ const Header = () => {
                 <Link href="/">
                     <img
                         src={useWhiteText
-                            ? "/wp-content/uploads/2024/11/Borde-Azul-Blanco.webp"
-                            : "/wp-content/uploads/2023/12/Azul-Sin-Borde.webp"}
+                            ? "/logo-white.webp"
+                            : "/logo-blue.webp"}
                         alt="Keicy Cabrera"
                         className="w-[150px] sm:w-[180px] h-auto transition-all duration-300"
                     />

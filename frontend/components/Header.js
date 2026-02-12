@@ -81,6 +81,7 @@ const Header = () => {
             setUser(updatedUser ? JSON.parse(updatedUser) : null);
         };
 
+        setOpenDropdown(null);
         window.addEventListener('storage', handleStorageChange);
         return () => window.removeEventListener('storage', handleStorageChange);
     }, [pathname]);
@@ -192,8 +193,7 @@ const Header = () => {
                                         <button
                                             className="bg-transparent border-none p-0 outline-none appearance-none"
                                             onClick={() => {
-                                                // Optional: Navigate on click if desired, or just let it toggle
-                                                // router.push(link.href);
+                                                router.push(link.href);
                                             }}
                                         >
                                             {linkContent}

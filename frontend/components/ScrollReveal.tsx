@@ -17,9 +17,9 @@ export default function ScrollReveal({
     children,
     direction = 'up',
     delay = 0,
-    duration = 0.5,
-    distance = 40,
-    scale = 1,
+    duration = 0.8,
+    distance = 50,
+    scale = 0.9,
     className = ""
 }: ScrollRevealProps) {
     const directions: Record<string, { x?: number; y?: number }> = {
@@ -36,19 +36,24 @@ export default function ScrollReveal({
             initial={{
                 opacity: 0,
                 scale: scale,
+                rotate: direction === 'none' ? 0 : (direction === 'left' ? 2 : -2),
                 ...directions[direction]
             }}
             whileInView={{
                 opacity: 1,
                 scale: 1,
+                rotate: 0,
                 x: 0,
                 y: 0
             }}
-            viewport={{ once: true, margin: "-50px" }}
+            viewport={{ once: true, margin: "-100px" }}
             transition={{
-                duration: duration,
+                type: "spring",
+                stiffness: 70,
+                damping: 15,
+                mass: 1,
                 delay: delay,
-                ease: [0.21, 0.47, 0.32, 0.98]
+                duration: duration
             }}
         >
             {children}

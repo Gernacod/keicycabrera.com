@@ -15,18 +15,50 @@ export default function CtaButton({
     type = "button",
     ...props
 }: CtaButtonProps) {
-    const baseStyles = "inline-flex items-center justify-center font-primary font-bold text-[20px] text-white bg-keicy-navy hover:bg-keicy-navy/90 py-4 px-10 rounded-[20px] shadow-[2px_4px_4px_0px_rgba(0,0,0,0.25)] transition-all active:translate-y-0.5 active:shadow-[1px_2px_2px_0px_rgba(0,0,0,0.25)] whitespace-nowrap";
+    const strictStyles = {
+        backgroundColor: '#0E5587',
+        color: '#FFFFFF',
+        paddingTop: '18px',
+        paddingBottom: '18px',
+        paddingLeft: '60px',
+        paddingRight: '60px',
+        borderRadius: '20px',
+        fontSize: '18px',
+        fontWeight: '700',
+        boxShadow: '2px 4px 4px 0px rgba(0,0,0,0.25)',
+        border: 'none',
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        transition: 'all 0.3s ease',
+        cursor: 'pointer',
+        fontFamily: 'inherit',
+        whiteSpace: 'nowrap' as const,
+        lineHeight: '1',
+        minHeight: '64px',
+    };
+
+    const hoverStyles = "hover:bg-[#0097b2] hover:shadow-[0px_6px_15px_rgba(0,151,178,0.4)] hover:-translate-y-0.5 active:translate-y-0 transition-all";
 
     if (href) {
         return (
-            <Link href={href} className={cn(baseStyles, className)}>
+            <Link
+                href={href}
+                className={cn(hoverStyles, className)}
+                style={strictStyles}
+            >
                 {children}
             </Link>
         );
     }
 
     return (
-        <button type={type} className={cn(baseStyles, className)} {...props}>
+        <button
+            type={type}
+            className={cn(hoverStyles, className)}
+            style={strictStyles}
+            {...props}
+        >
             {children}
         </button>
     );

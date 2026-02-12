@@ -1,5 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
+import ScrollReveal from './ScrollReveal';
+import CtaButton from './CtaButton';
 
 export default function HeroSection() {
     return (
@@ -13,35 +15,41 @@ export default function HeroSection() {
 
                     {/* Title Section */}
                     <div className="flex flex-col gap-[10px] lg:gap-[30px] items-start">
-                        <h1 className="text-[60px] md:text-[90px] lg:text-[124px] font-extrabold leading-[1] lg:leading-[80px] text-keicy-navy tracking-[1.4953px]">
-                            Keicy Cabrera
-                        </h1>
-                        <h2 className="text-[32px] md:text-[48px] lg:text-[64px] font-semibold leading-[1] lg:leading-[64px] text-keicy-sand tracking-[0.7718px]">
-                            Consultora Internacional
-                        </h2>
+                        <ScrollReveal direction="left" delay={0.1}>
+                            <h1 className="text-[60px] md:text-[90px] lg:text-[124px] font-extrabold leading-[1] lg:leading-[80px] text-keicy-navy tracking-[1.4953px]">
+                                Keicy Cabrera
+                            </h1>
+                        </ScrollReveal>
+                        <ScrollReveal direction="left" delay={0.2}>
+                            <h2 className="text-[32px] md:text-[48px] lg:text-[64px] font-semibold leading-[1] lg:leading-[64px] text-keicy-sand tracking-[0.7718px]">
+                                Consultora Internacional
+                            </h2>
+                        </ScrollReveal>
                     </div>
 
                     {/* Description */}
-                    <div className="w-full lg:w-[697px]">
-                        <p className="text-[18px] md:text-[22px] lg:text-[28px] leading-[1.3] lg:leading-[34px] text-keicy-navy">
-                            <span className="font-bold italic">Acompaño a organizaciones sociales y empresas con propósito a crecer con estrategia, impacto y humanidad</span>
-                            <span className="font-bold italic">.</span>
-                            <span className="text-[20px]"> </span>
-                            <span className="font-medium italic">A través de consultoría, formación y comunidad, diseño estructuras sostenibles, estrategias medibles y equipos fortalecidos para lograr resultados reales y transformadores.</span>
-                        </p>
-                    </div>
+                    <ScrollReveal direction="up" delay={0.4} distance={20}>
+                        <div className="w-full lg:w-[697px]">
+                            <p className="text-[18px] md:text-[22px] lg:text-[28px] leading-[1.3] lg:leading-[34px] text-keicy-navy">
+                                <span className="font-bold italic">Acompaño a organizaciones sociales y empresas con propósito a crecer con estrategia, impacto y humanidad</span>
+                                <span className="font-bold italic">.</span>
+                                <span className="text-[20px]"> </span>
+                                <span className="font-medium italic">A través de consultoría, formación y comunidad, diseño estructuras sostenibles, estrategias medibles y equipos fortalecidos para lograr resultados reales y transformadores.</span>
+                            </p>
+                        </div>
+                    </ScrollReveal>
                 </div>
 
                 {/* CTA Button */}
-                <div className="bg-keicy-navy flex h-[50px] lg:h-[64px] items-center justify-center px-[30px] lg:px-[40px] py-[10px] lg:py-[16px] rounded-[20px] shadow-[2px_4px_4px_0px_rgba(0,0,0,0.25)] cursor-pointer hover:opacity-90 transition-opacity">
-                    <p className="font-bold text-[16px] lg:text-[20px] text-center text-white leading-normal">
+                <ScrollReveal direction="up" delay={0.6} scale={0.8}>
+                    <CtaButton href="#contacto">
                         Descubre cómo puedo ayudarte
-                    </p>
-                </div>
+                    </CtaButton>
+                </ScrollReveal>
             </div>
 
             {/* Right Image - Keicy Portrait */}
-            <div className="absolute bottom-0 right-[5%] md:right-[8%] lg:right-[10%] h-full flex items-end justify-center pointer-events-none w-full max-w-[720px] pt-[100px]">
+            <ScrollReveal direction="right" delay={0.4} distance={100} duration={1.2} className="absolute bottom-0 right-[5%] md:right-[8%] lg:right-[10%] h-full flex items-end justify-center pointer-events-none w-full max-w-[720px] pt-[100px]">
                 <div className="relative w-full h-full">
                     <Image
                         src="/Keicy Portraits 2-8 1.png"
@@ -51,7 +59,7 @@ export default function HeroSection() {
                         priority
                     />
                 </div>
-            </div>
+            </ScrollReveal>
         </section>
     );
 }

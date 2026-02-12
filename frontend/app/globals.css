@@ -187,28 +187,22 @@ button:not([class*="bg-"]):not([data-sidebar]),
     /* neutral-900 */
 }
 
-/* Form Input Styling */
+/* Form Input Styling - Resetting internal borders and focus states to avoid artifacts */
 input:not([type="submit"]):not([type="button"]),
 textarea,
 select {
     border: none !important;
     outline: none !important;
-    border-radius: 1rem !important;
-    background-color: #f8fafc !important;
-    /* light gray bg-gray-50 */
-    padding-left: 1.5rem !important;
-    padding-right: 1.5rem !important;
-    padding-top: 1rem !important;
-    padding-bottom: 1rem !important;
-    transition: all 0.3s ease !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
+    appearance: none !important;
 }
 
-input:not([type="submit"]):not([type="button"]):focus,
+input:focus,
 textarea:focus,
 select:focus {
-    background-color: #ffffff !important;
-    box-shadow: 0 0 0 2px rgba(24, 68, 118, 0.05) !important;
-    outline: 2px solid hsl(var(--primary)) !important;
+    outline: none !important;
+    box-shadow: none !important;
 }
 
 /* Premium Button Style for Brand Blue */
@@ -272,7 +266,66 @@ header .bg-\[\#184476\]:hover {
     color: white !important;
 }
 
-/* Ensure FAQ open state remains solid blue if needed, but without breaking transparency elsewhere */
+/* Ensure FAQ open state remains solid blue if needed */
 .faq-active {
     background-color: #184476 !important;
+}
+
+/* ---------------------------------------------------------
+   STRICT BRAND STYLES (Overrides all legacy/conflicting CSS)
+   --------------------------------------------------------- */
+
+/* Brand Navy Background */
+.bg-keicy-navy,
+[data-name="BotonS"],
+button[type="submit"]:not(.bg-transparent) {
+    background-color: #0E5587 !important;
+    background-image: none !important;
+    color: #FFFFFF !important;
+    border-radius: 20px !important;
+    font-weight: 700 !important;
+    font-size: 18px !important;
+    padding: 18px 60px !important;
+    box-shadow: 2px 4px 4px 0px rgba(0, 0, 0, 0.25) !important;
+    border: none !important;
+    transition: all 0.3s ease !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-family: inherit !important;
+    min-width: 300px !important;
+    line-height: normal !important;
+    height: auto !important;
+}
+
+/* Force Text Color Inside Brand Elements */
+.bg-keicy-navy *,
+[data-name="BotonS"] *,
+button[type="submit"] * {
+    color: #FFFFFF !important;
+}
+
+/* Hover Effects */
+.bg-keicy-navy:hover,
+[data-name="BotonS"]:hover,
+button[type="submit"]:not(.bg-transparent):hover {
+    background-color: #0097b2 !important;
+    color: #FFFFFF !important;
+    transform: translateY(-2px);
+    box-shadow: 0px 6px 15px rgba(0, 151, 178, 0.4) !important;
+}
+/* Infinite Horizontal Scroll Animation */
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.animate-scroll {
+    display: flex;
+    width: max-content;
+    animation: scroll 40s linear infinite;
+}
+
+.animate-scroll:hover {
+    animation-play-state: paused;
 }

@@ -42,27 +42,23 @@ export default function Home() {
     <main className="min-h-screen bg-white overflow-x-hidden font-sans">
 
       {/* Sec1: Hero Section */}
-      <ScrollReveal direction="none" duration={1}>
-        <HeroSection />
-      </ScrollReveal>
+      <HeroSection />
 
       {/* C2: Stats Section */}
-      <ScrollReveal delay={0.2}>
-        <StatsSection />
-      </ScrollReveal>
+      <StatsSection />
 
       {/* Sec1 (Part 2): Video and Philosophy */}
-      <ScrollReveal>
-        <PhilosophySection />
-      </ScrollReveal>
+      <PhilosophySection />
 
       {/* Organizations Carousel */}
-      <ScrollReveal>
-        <section className="bg-white py-[60px] md:py-[80px] overflow-hidden">
+      <section className="bg-white py-[60px] md:py-[80px] overflow-hidden">
+        <ScrollReveal direction="up" delay={0.1}>
           <h2 className="text-center text-[36px] md:text-[52px] font-bold text-keicy-navy mb-[40px] md:mb-[60px] px-4">
             Organizaciones y empresas con las que he colaborado
           </h2>
+        </ScrollReveal>
 
+        <ScrollReveal direction="up" delay={0.3} scale={0.95}>
           <div className="relative flex overflow-hidden py-10">
             <motion.div
               className="flex gap-12 md:gap-24 items-center whitespace-nowrap"
@@ -78,11 +74,10 @@ export default function Home() {
                 },
               }}
             >
-              {/* Double the list for infinite effect */}
               {[...organizations, ...organizations].map((org, i) => (
                 <div
                   key={i}
-                  className="shrink-0 h-[80px] md:h-[100px] w-[140px] md:w-[180px] flex items-center justify-center transition-all bg-white"
+                  className="shrink-0 h-[80px] md:h-[100px] w-[140px] md:w-[180px] flex items-center justify-center bg-white"
                 >
                   <img
                     src={org.src}
@@ -93,56 +88,35 @@ export default function Home() {
               ))}
             </motion.div>
           </div>
-        </section >
-      </ScrollReveal>
+        </ScrollReveal>
+      </section >
 
       {/* Methodology Section */}
-      <ScrollReveal>
-        < MethodologySection />
-      </ScrollReveal>
+      < MethodologySection />
 
       {/* Testimonials */}
-      <ScrollReveal direction="left">
-        < TestimonialsSection />
-      </ScrollReveal>
+      < TestimonialsSection />
 
       {/* Video Testimonials */}
-      <ScrollReveal direction="right">
-        < VideoTestimonialsSection />
-      </ScrollReveal>
+      < VideoTestimonialsSection />
 
       {/* Newsletter */}
-      <ScrollReveal>
-        <NewsletterSection />
-      </ScrollReveal>
+      <NewsletterSection />
 
-      {/* Infoproducts */}
-      <ScrollReveal>
-        <InfoproductosSection />
-      </ScrollReveal>
+      {/* Infoproductos */}
+      <InfoproductosSection />
 
       {/* Community CTA */}
-      <ScrollReveal scale={0.95}>
-        <CommunitySection />
-      </ScrollReveal>
+      <CommunitySection />
 
       {/* Contact Form Section */}
-      <ScrollReveal>
-        <ContactSection />
-      </ScrollReveal>
+      <ContactSection />
 
       {/* Free Resources Section */}
-      <ScrollReveal>
-        <FreeResourcesSection />
-      </ScrollReveal>
+      <FreeResourcesSection />
 
       {/* Blog Section */}
-      <ScrollReveal>
-        <BlogSection />
-      </ScrollReveal>
-
-      {/* Footer Content (Frame 37/23) - Implemented here if needed, or rely on layout */}
-      {/* Footer code is typically in layout.tsx */}
+      <BlogSection />
 
     </main >
   );

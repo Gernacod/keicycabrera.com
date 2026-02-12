@@ -1,56 +1,66 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
+import ScrollReveal from './ScrollReveal';
+import AnimatedCounter from './AnimatedCounter';
 
 export default function NewsletterSection() {
     return (
-        <section className="w-full bg-[#0097b2] py-[80px] px-4 md:px-[60px] font-primary relative overflow-hidden text-white flex flex-col items-center">
-            <div className="max-w-[1240px] mx-auto flex flex-col items-center text-center gap-[30px] md:gap-[40px]">
+        <section className="w-full bg-[#0097b2] py-[60px] md:py-[80px] px-6 md:px-[40px] font-['Red_Hat_Display',sans-serif] relative overflow-hidden text-white flex flex-col items-center">
+            <div className="max-w-[1240px] w-full mx-auto flex flex-col gap-[60px]">
 
-                {/* Title */}
-                <div className="flex flex-col items-center leading-none">
-                    <h2 className="text-[50px] md:text-[80px] lg:text-[96px] font-bold tracking-[1.44px] leading-tight">
-                        Suscríbete a
-                    </h2>
-                    <h2 className="text-[50px] md:text-[80px] lg:text-[96px] font-bold tracking-[1.44px] leading-tight">
-                        Brújula de impacto
-                    </h2>
-                </div>
+                {/* Header Content */}
+                <div className="flex flex-col gap-[40px] items-start w-full">
+                    {/* Title */}
+                    <ScrollReveal direction="left" delay={0.1} className="w-full">
+                        <div className="flex flex-col font-bold leading-[0.9] md:leading-[92px] text-[40px] md:text-[80px] lg:text-[96px] tracking-[1.44px] whitespace-normal md:whitespace-nowrap">
+                            <p className="mb-0">Suscríbete a</p>
+                            <p className="md:ml-[120px]">Brújula de impacto</p>
+                        </div>
+                    </ScrollReveal>
 
-                {/* Description */}
-                <div className="max-w-[1100px] text-[20px] md:text-[30px] lg:text-[36px] leading-[1.3] font-medium italic space-y-4">
-                    <p>
-                        <span className="font-bold">Es una newsletter gratuita para profesionales del sector social</span> que se sienten perdidos por la saturación de información. Cada miércoles ofrece herramientas prácticas, guías y reflexiones basadas en experiencia real para ayudarles a avanzar en su carrera y proyectos con claridad, estructura y propósito, sin perder la esencia de su trabajo.
-                    </p>
-                </div>
+                    {/* Description */}
+                    <ScrollReveal direction="up" delay={0.3} className="w-full">
+                        <div className="text-[20px] md:text-[30px] lg:text-[36px] font-medium italic">
+                            <p className="leading-[1.2] md:leading-[40px] text-left">
+                                <span className="font-bold italic">Es una newsletter gratuita para profesionales del sector social</span>
+                                <span> que se sienten perdidos por la saturación de información. Cada miércoles ofrece herramientas prácticas, guías y reflexiones basadas en experiencia real para ayudarles a avanzar en su carrera y proyectos con claridad, estructura y propósito, sin perder la esencia de su trabajo.</span>
+                            </p>
+                        </div>
+                    </ScrollReveal>
 
-                {/* Subtitle */}
-                <div className="w-full flex justify-end max-w-[1100px] mt-4">
-                    <p className="text-[24px] md:text-[36px] font-medium italic">
-                        Espero que te sirva.
-                    </p>
-                </div>
-
-                {/* Form Container */}
-                <div className="w-full max-w-[1000px] mt-8 flex flex-col gap-4">
-                    <div className="flex flex-col md:flex-row gap-4 w-full">
-                        <input
-                            type="email"
-                            placeholder="Ingresa tu correo electrónico"
-                            className="flex-1 h-[70px] md:h-[80px] rounded-[15px] px-8 text-[20px] text-keicy-navy outline-none placeholder:text-gray-400 bg-white shadow-inner"
-                        />
-                        <Button
-                            className="bg-[#114E6F] hover:bg-[#0e4460] text-white font-bold text-[20px] h-[70px] md:h-[80px] px-10 rounded-[15px] shadow-lg transition-transform hover:scale-105 w-full md:w-auto shrink-0"
-                        >
-                            Quiero Suscribirme
-                        </Button>
-                    </div>
-
-                    {/* Counter */}
-                    <div className="flex flex-col items-end w-full pr-4">
-                        <p className="text-[28px] md:text-[36px] font-bold italic leading-tight text-right w-full">
-                            3000+ <span className="font-normal not-italic">personas suscritas</span>
+                    {/* Subtitle / Closing */}
+                    <ScrollReveal direction="right" delay={0.4} className="w-full flex justify-end">
+                        <p className="text-[24px] md:text-[36px] font-medium italic leading-[40px]">
+                            Espero que te sirva.
                         </p>
-                    </div>
+                    </ScrollReveal>
+                </div>
+
+                {/* Form and Counter */}
+                <div className="flex flex-col items-center justify-center gap-[40px] w-full">
+                    {/* Unified Input Bar */}
+                    <ScrollReveal direction="up" delay={0.5} className="w-full flex justify-center">
+                        <div className="bg-white flex items-center p-1 md:p-[6px] pl-[20px] md:pl-[30px] rounded-[20px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] w-full max-w-[846px] h-[72px] md:h-[84px]">
+                            <input
+                                type="email"
+                                placeholder="Ingresa tu correo electrónico"
+                                className="flex-1 bg-transparent border-none outline-none text-keicy-navy text-[16px] md:text-[20px] font-bold placeholder:text-[#d1d0cf] w-full"
+                            />
+                            <Button
+                                className="bg-[#0e5587] hover:bg-[#0c4a75] text-white font-bold text-[16px] md:text-[20px] h-full px-[20px] md:px-[40px] rounded-[18px] transition-all whitespace-nowrap"
+                            >
+                                Quiero Suscribirme
+                            </Button>
+                        </div>
+                    </ScrollReveal>
+
+                    {/* Subscriber Counter */}
+                    <ScrollReveal direction="right" delay={0.6} className="w-full flex justify-end">
+                        <div className="text-right text-white font-bold italic text-[24px] md:text-[36px] leading-[1.1] md:leading-[40px]">
+                            <p className="mb-0"><AnimatedCounter value={3000} suffix="+" /></p>
+                            <p>personas suscritas</p>
+                        </div>
+                    </ScrollReveal>
                 </div>
 
             </div>

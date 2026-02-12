@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import type { Metadata } from 'next'
 import AnimationsHandler from '@/components/AnimationsHandler'
 import { Toaster } from 'sonner'
+import ScrollToTop from "@/components/ScrollToTop";
 
 export const metadata: Metadata = {
   title: 'Keicy Cabrera',
@@ -1161,6 +1162,7 @@ ol,ul{box-sizing:border-box}:root :where(.wp-block-list.has-background){padding:
           <Header />
           {children}
           <Footer />
+          <ScrollToTop />
         </Providers>
       </body>
     </html>

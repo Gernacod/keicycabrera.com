@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import useLinkInterceptor from '@/hooks/useLinkInterceptor';
 import Link from 'next/link';
+import ScrollReveal from '@/components/ScrollReveal';
 
 const blogPosts = [
 	{
@@ -89,14 +90,22 @@ const Blog = () => {
 			{/* Hero Section */}
 			<section className="bg-gray-50 py-20 px-4">
 				<div className="container mx-auto max-w-4xl text-center">
-					<div className="flex justify-center mb-8">
-						<img src="/wp-content/uploads/2024/11/rombo-azul.webp" alt="" className="w-16 h-16 mr-4" />
-					</div>
-					<h1 className="text-5xl font-bold text-[#184476] mb-6">Blog</h1>
-					<h2 className="text-3xl font-semibold text-gray-800 mb-8 font-serif italic">Impulso Social</h2>
-					<p className="text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto">
-						En este espacio, proporcionaré <strong>información</strong> para organizaciones y profesionales del sector social, de manera que puedan llevar su carrera y actividades <strong>a niveles que no imaginaban.</strong>
-					</p>
+					<ScrollReveal direction="up" delay={0.1}>
+						<div className="flex justify-center mb-8">
+							<img src="/wp-content/uploads/2024/11/rombo-azul.webp" alt="" className="w-16 h-16 mr-4" />
+						</div>
+					</ScrollReveal>
+					<ScrollReveal direction="up" delay={0.2}>
+						<h1 className="text-5xl font-bold text-[#184476] mb-6">Blog</h1>
+					</ScrollReveal>
+					<ScrollReveal direction="up" delay={0.3}>
+						<h2 className="text-3xl font-semibold text-gray-800 mb-8 font-serif italic">Impulso Social</h2>
+					</ScrollReveal>
+					<ScrollReveal direction="up" delay={0.4}>
+						<p className="text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto">
+							En este espacio, proporcionaré <strong>información</strong> para organizaciones y profesionales del sector social, de manera que puedan llevar su carrera y actividades <strong>a niveles que no imaginaban.</strong>
+						</p>
+					</ScrollReveal>
 				</div>
 			</section>
 
@@ -104,17 +113,18 @@ const Blog = () => {
 			<section className="py-12 border-b border-gray-100 sticky top-0 bg-white z-20 shadow-sm">
 				<div className="container mx-auto px-4 overflow-x-auto">
 					<div className="flex justify-center gap-4 whitespace-nowrap min-w-max pb-2">
-						{categories.map((cat) => (
-							<button
-								key={cat}
-								onClick={() => setFilter(cat)}
-								className={`px-6 py-2 rounded-full font-semibold transition-all ${filter === cat
+						{categories.map((cat, i) => (
+							<ScrollReveal key={cat} direction="up" delay={i * 0.05}>
+								<button
+									onClick={() => setFilter(cat)}
+									className={`px-6 py-2 rounded-full font-semibold transition-all ${filter === cat
 										? 'bg-[#184476] text-white shadow-md'
 										: 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-									}`}
-							>
-								{cat}
-							</button>
+										}`}
+								>
+									{cat}
+								</button>
+							</ScrollReveal>
 						))}
 					</div>
 				</div>
@@ -124,43 +134,45 @@ const Blog = () => {
 			<section className="py-20 px-4">
 				<div className="container mx-auto max-w-7xl">
 					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-						{filteredPosts.map((post) => (
-							<article key={post.id} className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all border border-gray-100 flex flex-col h-full transform hover:-translate-y-2">
-								{post.image ? (
-									<div className="relative aspect-[16/9] overflow-hidden">
-										<img
-											src={post.image}
-											alt={post.title}
-											className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-										/>
-										<div className="absolute top-4 left-4 bg-[#184476] text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-tighter">
-											{post.category}
+						{filteredPosts.map((post, i) => (
+							<ScrollReveal key={post.id} direction="up" delay={(i % 3) * 0.1}>
+								<article className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all border border-gray-100 flex flex-col h-full transform hover:-translate-y-2">
+									{post.image ? (
+										<div className="relative aspect-[16/9] overflow-hidden">
+											<img
+												src={post.image}
+												alt={post.title}
+												className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+											/>
+											<div className="absolute top-4 left-4 bg-[#184476] text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-tighter">
+												{post.category}
+											</div>
 										</div>
+									) : (
+										<div className="aspect-[16/9] bg-gray-50 flex items-center justify-center p-8">
+											<img src="/wp-content/uploads/2024/11/rombo-azul.webp" alt="" className="w-12 h-12 opacity-20" />
+										</div>
+									)}
+									<div className="p-8 flex flex-col grow">
+										<p className="text-sm text-gray-400 mb-4">{post.date}</p>
+										<h3 className="text-2xl font-bold text-gray-800 mb-4 leading-tight group-hover:text-[#184476] transition-colors">
+											{post.title}
+										</h3>
+										<p className="text-gray-600 mb-8 line-clamp-3">
+											{post.excerpt}
+										</p>
+										<Link
+											href={post.link}
+											className="mt-auto inline-flex items-center font-bold text-[#184476] group/btn"
+										>
+											<span>Leer más</span>
+											<svg className="w-5 h-5 ml-2 group-hover/btn:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+												<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+											</svg>
+										</Link>
 									</div>
-								) : (
-									<div className="aspect-[16/9] bg-gray-50 flex items-center justify-center p-8">
-										<img src="/wp-content/uploads/2024/11/rombo-azul.webp" alt="" className="w-12 h-12 opacity-20" />
-									</div>
-								)}
-								<div className="p-8 flex flex-col grow">
-									<p className="text-sm text-gray-400 mb-4">{post.date}</p>
-									<h3 className="text-2xl font-bold text-gray-800 mb-4 leading-tight group-hover:text-[#184476] transition-colors">
-										{post.title}
-									</h3>
-									<p className="text-gray-600 mb-8 line-clamp-3">
-										{post.excerpt}
-									</p>
-									<Link
-										href={post.link}
-										className="mt-auto inline-flex items-center font-bold text-[#184476] group/btn"
-									>
-										<span>Leer más</span>
-										<svg className="w-5 h-5 ml-2 group-hover/btn:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-											<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-										</svg>
-									</Link>
-								</div>
-							</article>
+								</article>
+							</ScrollReveal>
 						))}
 					</div>
 					{filteredPosts.length === 0 && (

@@ -66,10 +66,9 @@ export default function RootLayout({
         <link rel='stylesheet' id='wpr-text-animations-css-css' href="/wp-content/plugins/royal-elementor-addons/assets/css/lib/animations/text-animations.mine64a.css?ver=1.7.1045" type='text/css' media='all' />
         <link rel='stylesheet' id='wpr-addons-css-css' href="/wp-content/plugins/royal-elementor-addons/assets/css/frontend.mine64a.css?ver=1.7.1045" type='text/css' media='all' />
         <link rel='stylesheet' id='font-awesome-5-all-css' href="/wp-content/plugins/elementor/assets/lib/font-awesome/css/all.min48b8.css?ver=4.11.54" type='text/css' media='all' />
-        <link rel='stylesheet' id='elementor-gf-local-montserrat-css' href="/wp-content/uploads/elementor/google-fonts/css/montserratc6b6.css?ver=1763914901" type='text/css' media='all' />
-        <link rel='stylesheet' id='elementor-gf-local-redhatdisplay-css' href="/wp-content/uploads/elementor/google-fonts/css/redhatdisplayc014.css?ver=1763914902" type='text/css' media='all' />
-        <link rel='stylesheet' id='elementor-gf-local-poppins-css' href="/wp-content/uploads/elementor/google-fonts/css/poppins1a2a.css?ver=1763914903" type='text/css' media='all' />
-        <link rel='stylesheet' id='elementor-gf-local-arsenal-css' href="/wp-content/uploads/elementor/google-fonts/css/arsenal3a0b.css?ver=1763914904" type='text/css' media='all' />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Arsenal:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100..900;1,100..900&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet" />
         <link rel='stylesheet' id='wc-blocks-style-css' href="/wp-content/plugins/woocommerce/assets/client/blocks/wc-blocks5210.css?ver=wc-10.4.3" type='text/css' media='all' />
         <link rel='stylesheet' id='wpforms-modern-full-css' href="/wp-content/plugins/wpforms-lite/assets/css/frontend/modern/wpforms-full.min6a02.css?ver=1.9.5.1" type='text/css' media='all' />
         <link rel='stylesheet' id='elementor-post-1478-css' href='/wp-content/uploads/elementor/css/post-1478e0ad.css?ver=1745594171' type='text/css' media='all' />

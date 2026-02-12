@@ -23,10 +23,10 @@ export default function HeroSection() {
 
                     {/* Description */}
                     <div className="w-full lg:w-[697px]">
-                        <p className="text-[20px] md:text-[28px] lg:text-[36px] leading-[1.2] lg:leading-[40px] text-keicy-navy">
+                        <p className="text-[18px] md:text-[22px] lg:text-[28px] leading-[1.3] lg:leading-[34px] text-keicy-navy">
                             <span className="font-bold italic">Acompaño a organizaciones sociales y empresas con propósito a crecer con estrategia, impacto y humanidad</span>
                             <span className="font-bold italic">.</span>
-                            <span className="text-[24px]"> </span>
+                            <span className="text-[20px]"> </span>
                             <span className="font-medium italic">A través de consultoría, formación y comunidad, diseño estructuras sostenibles, estrategias medibles y equipos fortalecidos para lograr resultados reales y transformadores.</span>
                         </p>
                     </div>

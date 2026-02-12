@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'; // Assuming these exist
 import { Button } from '@/components/ui/button';
 import { Play, ArrowRight, Check, Plus } from 'lucide-react';
@@ -49,16 +50,40 @@ export default function Home() {
       <PhilosophySection />
 
       {/* Organizations Carousel */}
-      <section className="bg-white py-[80px] overflow-hidden">
-        <h2 className="text-center text-[36px] md:text-[52px] font-bold text-keicy-navy mb-[60px]">
+      <section className="bg-white py-[60px] md:py-[80px] overflow-hidden">
+        <h2 className="text-center text-[36px] md:text-[52px] font-bold text-keicy-navy mb-[40px] md:mb-[60px] px-4">
           Organizaciones y empresas con las que he colaborado
         </h2>
-        <div className="flex overflow-x-auto gap-12 px-8 pb-8 no-scrollbar items-center justify-start md:justify-center min-w-full">
-          {organizations.map((org, i) => (
-            <div key={i} className="shrink-0 h-[100px] md:h-[120px] relative w-[150px] md:w-[200px] flex items-center justify-center grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100">
-              <img src={org.src} alt={org.name} className="max-h-full max-w-full object-contain" />
-            </div>
-          ))}
+
+        <div className="relative flex overflow-hidden py-10">
+          <motion.div
+            className="flex gap-12 md:gap-24 items-center whitespace-nowrap"
+            animate={{
+              x: [0, -1035], // Approximate half width for seamless loop
+            }}
+            transition={{
+              x: {
+                repeat: Infinity,
+                repeatType: "loop",
+                duration: 25,
+                ease: "linear",
+              },
+            }}
+          >
+            {/* Double the list for infinite effect */}
+            {[...organizations, ...organizations].map((org, i) => (
+              <div
+                key={i}
+                className="shrink-0 h-[80px] md:h-[100px] w-[140px] md:w-[180px] flex items-center justify-center transition-all bg-white"
+              >
+                <img
+                  src={org.src}
+                  alt={org.name}
+                  className="max-h-full max-w-full object-contain filter-none"
+                />
+              </div>
+            ))}
+          </motion.div>
         </div>
       </section >
 

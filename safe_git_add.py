@@ -2,42 +2,38 @@ import os
 import subprocess
 import time
 
-ignore_dirs = {'.git', 'node_modules', '.next', 'dist', 'build', 'coverage', '.cache', 'backend/uploads', '.npm-cache', '.npm', 'lightgallery'}
-ignore_extensions = {'.log', '.DS_Store'}
-
-root = "."
-success_count = 0
-fail_count = 0
-
-print("Starting safe git add...")
-
-for dirpath, dirnames, filenames in os.walk(root):
-    # Modify dirnames in-place to skip ignored directories
-    dirnames[:] = [d for d in dirnames if d not in ignore_dirs]
-    
-    # Also skip if we are inside an ignored path structure manually (extra safety)
-    if 'node_modules' in dirpath or '.next' in dirpath:
-        continue
-
-    for f in filenames:
-        if f.endswith('.log') or f == '.DS_Store': continue
-        
-        full_path = os.path.join(dirpath, f)
-        
-        try:
-            subprocess.check_call(["git", "add", full_path])
-            success_count += 1
-        except subprocess.CalledProcessError as e:
-            print(f"FAILED to add {full_path}: {e}")
-            # Try to touch and retry once
+def add_files(directory):
+    lock_path = '.git/index.lock'
+    for root, dirs, files in os.walk(directory):
+        for file in files:
+            filepath = os.path.join(root, file)
+            # Remove lock if it exists
+            if os.path.exists(lock_path):
+                try:
+                    os.remove(lock_path)
+                except:
+                    pass
+            
             try:
-                os.utime(full_path, None)
-                time.sleep(0.1)
-                subprocess.check_call(["git", "add", full_path])
-                print(f"Retry SUCCEEDED for {full_path}")
-                success_count += 1
-            except Exception:
-                print(f"Retry FAILED for {full_path}")
-                fail_count += 1
+                # Use git add on each file
+                result = subprocess.run(['git', 'add', filepath], capture_output=True, text=True)
+                if result.returncode != 0:
+                    print(f"FAILED to add {filepath}")
+                    # If it's a lock file issue, we try again once after removal
+                    if "index.lock" in result.stderr:
+                        if os.path.exists(lock_path):
+                            os.remove(lock_path)
+                        subprocess.run(['git', 'add', filepath])
+            except Exception as e:
+                print(f"ERROR processing {filepath}: {e}")
 
-print(f"Finished. Success: {success_count}, Failed: {fail_count}")
+if __name__ == "__main__":
+    target_dirs = [
+        'frontend/public/wp-content',
+        'frontend/public/wp-includes'
+    ]
+    for d in target_dirs:
+        if os.path.exists(d):
+            print(f"Adding files in {d}...")
+            add_files(d)
+    print("Done adding individual files.")

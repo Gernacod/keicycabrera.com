@@ -1,0 +1,21 @@
+{
+  "name": "keicycabrera",
+  "version": "1.0.0",
+  "description": "Plataforma multitenant para Keicy Cabrera - Sistema completo de gestión con frontend y backend.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexandernieves/keicyCabrera.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/alexandernieves/keicyCabrera/issues"
+  },
+  "homepage": "https://github.com/alexandernieves/keicyCabrera#readme"
+}

@@ -20,6 +20,7 @@ import CommunitySection from '@/components/CommunitySection';
 import ContactSection from '@/components/ContactSection';
 import FreeResourcesSection from '@/components/FreeResourcesSection';
 import BlogSection from '@/components/BlogSection';
+import ScrollReveal from '@/components/ScrollReveal';
 
 export default function Home() {
   // Existing data for logos (mapped from original page.js)
@@ -41,78 +42,104 @@ export default function Home() {
     <main className="min-h-screen bg-white overflow-x-hidden font-sans">
 
       {/* Sec1: Hero Section */}
-      <HeroSection />
+      <ScrollReveal direction="none" duration={1}>
+        <HeroSection />
+      </ScrollReveal>
 
       {/* C2: Stats Section */}
-      <StatsSection />
+      <ScrollReveal delay={0.2}>
+        <StatsSection />
+      </ScrollReveal>
 
       {/* Sec1 (Part 2): Video and Philosophy */}
-      <PhilosophySection />
+      <ScrollReveal>
+        <PhilosophySection />
+      </ScrollReveal>
 
       {/* Organizations Carousel */}
-      <section className="bg-white py-[60px] md:py-[80px] overflow-hidden">
-        <h2 className="text-center text-[36px] md:text-[52px] font-bold text-keicy-navy mb-[40px] md:mb-[60px] px-4">
-          Organizaciones y empresas con las que he colaborado
-        </h2>
+      <ScrollReveal>
+        <section className="bg-white py-[60px] md:py-[80px] overflow-hidden">
+          <h2 className="text-center text-[36px] md:text-[52px] font-bold text-keicy-navy mb-[40px] md:mb-[60px] px-4">
+            Organizaciones y empresas con las que he colaborado
+          </h2>
 
-        <div className="relative flex overflow-hidden py-10">
-          <motion.div
-            className="flex gap-12 md:gap-24 items-center whitespace-nowrap"
-            animate={{
-              x: [0, -1035], // Approximate half width for seamless loop
-            }}
-            transition={{
-              x: {
-                repeat: Infinity,
-                repeatType: "loop",
-                duration: 25,
-                ease: "linear",
-              },
-            }}
-          >
-            {/* Double the list for infinite effect */}
-            {[...organizations, ...organizations].map((org, i) => (
-              <div
-                key={i}
-                className="shrink-0 h-[80px] md:h-[100px] w-[140px] md:w-[180px] flex items-center justify-center transition-all bg-white"
-              >
-                <img
-                  src={org.src}
-                  alt={org.name}
-                  className="max-h-full max-w-full object-contain filter-none"
-                />
-              </div>
-            ))}
-          </motion.div>
-        </div>
-      </section >
+          <div className="relative flex overflow-hidden py-10">
+            <motion.div
+              className="flex gap-12 md:gap-24 items-center whitespace-nowrap"
+              animate={{
+                x: [0, -1035], // Approximate half width for seamless loop
+              }}
+              transition={{
+                x: {
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  duration: 25,
+                  ease: "linear",
+                },
+              }}
+            >
+              {/* Double the list for infinite effect */}
+              {[...organizations, ...organizations].map((org, i) => (
+                <div
+                  key={i}
+                  className="shrink-0 h-[80px] md:h-[100px] w-[140px] md:w-[180px] flex items-center justify-center transition-all bg-white"
+                >
+                  <img
+                    src={org.src}
+                    alt={org.name}
+                    className="max-h-full max-w-full object-contain filter-none"
+                  />
+                </div>
+              ))}
+            </motion.div>
+          </div>
+        </section >
+      </ScrollReveal>
 
       {/* Methodology Section */}
-      < MethodologySection />
+      <ScrollReveal>
+        < MethodologySection />
+      </ScrollReveal>
 
       {/* Testimonials */}
-      < TestimonialsSection />
+      <ScrollReveal direction="left">
+        < TestimonialsSection />
+      </ScrollReveal>
 
       {/* Video Testimonials */}
-      < VideoTestimonialsSection />
+      <ScrollReveal direction="right">
+        < VideoTestimonialsSection />
+      </ScrollReveal>
 
       {/* Newsletter */}
-      <NewsletterSection />
+      <ScrollReveal>
+        <NewsletterSection />
+      </ScrollReveal>
 
       {/* Infoproducts */}
-      <InfoproductosSection />
+      <ScrollReveal>
+        <InfoproductosSection />
+      </ScrollReveal>
 
       {/* Community CTA */}
-      <CommunitySection />
+      <ScrollReveal scale={0.95}>
+        <CommunitySection />
+      </ScrollReveal>
 
       {/* Contact Form Section */}
-      <ContactSection />
+      <ScrollReveal>
+        <ContactSection />
+      </ScrollReveal>
 
       {/* Free Resources Section */}
-      <FreeResourcesSection />
+      <ScrollReveal>
+        <FreeResourcesSection />
+      </ScrollReveal>
 
       {/* Blog Section */}
-      <BlogSection />
+      <ScrollReveal>
+        <BlogSection />
+      </ScrollReveal>
 
       {/* Footer Content (Frame 37/23) - Implemented here if needed, or rely on layout */}
       {/* Footer code is typically in layout.tsx */}

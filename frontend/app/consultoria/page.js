@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import useLinkInterceptor from '@/hooks/useLinkInterceptor';
-import { Play, Check, Plus, ChevronDown, ArrowRight, Star } from 'lucide-react';
+import { Play, Check, Plus, ChevronDown, ChevronLeft, ChevronRight, Star } from 'lucide-react';
 import ScrollReveal from '@/components/ScrollReveal';
 import CtaButton from '@/components/CtaButton';
 
@@ -18,7 +18,7 @@ const Consultoria = () => {
 			role: "Escala tu impacto social",
 			date: "Febrero 2024",
 			text: "Me encanto mucho la personalidad de Keicy, siento que a veces en las formaciones online se pierde mucho la calidez y la humanidad en el trato y se sintió muy bien abrir espacio para compartir nuestras experiencias!!",
-			image: "http://localhost:3845/assets/29e7380df5f913a7b4f29bea5aacfc1af613b232.png",
+			image: "/wp-content/uploads/2024/11/oriana.jpg",
 			initials: "RV"
 		},
 		{
@@ -27,7 +27,7 @@ const Consultoria = () => {
 			role: "COO de @Datimpacto",
 			date: "Abril 2025",
 			text: "Tuvimos el privilegio de trabajar con Keicy como Consultora de M&E en un proyecto del área de asistencia humanitaria en Venezuela. Sus aportes fueron siempre relevantes y de alta calidad, destacándose por su proactividad y la velocidad con la que generaba productos complejos y bien elaborados. Contribuyó significativamente al diseño de estrategias de evaluación y a la creación de herramientas clave.",
-			image: "http://localhost:3845/assets/92b233f1246462930bccd99e4e423fe20a5dca6d.png",
+			image: "/wp-content/uploads/2025/04/images-2.jpg",
 			initials: "MF"
 		},
 		{
@@ -285,7 +285,7 @@ const Consultoria = () => {
 							onClick={handlePrev}
 							className="shrink-0 hover:scale-110 transition-transform hidden md:block z-50 relative"
 						>
-							<img src="http://localhost:3845/assets/5a4d3751b5d8675e5717a9011f31dd17dc9df0b3.svg" alt="Prev" className="size-[48px] rotate-180" />
+							<ChevronLeft className="size-[48px] text-[#0e5587]" />
 						</button>
 
 						<div className="flex items-center justify-center relative h-[650px] md:h-[720px] w-full max-w-[934px] overflow-visible">
@@ -315,7 +315,7 @@ const Consultoria = () => {
 													</div>
 													<div className="flex gap-[8px]">
 														{[...Array(5)].map((_, i) => (
-															<img key={i} src="http://localhost:3845/assets/71dd69d0d958d33e22432f11ff7b181ef23620fe.svg" className="size-[24px]" alt="Star" />
+															<Star key={i} className="size-[24px] fill-[#FDB813] text-[#FDB813]" />
 														))}
 													</div>
 													<div className="text-[#0e5587] italic text-[22px] md:text-[24px] leading-[30px] md:leading-[35px] tracking-[0.48px] whitespace-pre-wrap">
@@ -348,7 +348,7 @@ const Consultoria = () => {
 													</div>
 													<div className="flex gap-[8px]">
 														{[...Array(5)].map((_, i) => (
-															<img key={i} src="http://localhost:3845/assets/3d8f09dfd7b181627ae5598a23798ee2afcc0be6.svg" className="size-[16px]" alt="Star" />
+															<Star key={i} className="size-[16px] fill-[#FDB813] text-[#FDB813]" />
 														))}
 													</div>
 													<div className="text-[#0e5587] italic text-[10px] leading-[18px] tracking-[0.2px] line-clamp-6">
@@ -369,7 +369,7 @@ const Consultoria = () => {
 							onClick={handleNext}
 							className="shrink-0 hover:scale-110 transition-transform hidden md:block z-50 relative"
 						>
-							<img src="http://localhost:3845/assets/d45ee9dbe7e6248f73cad382d7c809db68b5a009.svg" alt="Next" className="size-[48px]" />
+							<ChevronRight className="size-[48px] text-[#0e5587]" />
 						</button>
 					</div>
 
@@ -447,11 +447,7 @@ const Consultoria = () => {
 												<span className="text-[#0e5587] font-semibold text-[28px] leading-[40px] tracking-[0.34px]">
 													{item.title}
 												</span>
-												<img
-													src={openMethod === item.id ? "http://localhost:3845/assets/0ae0ca6958a19ffff45d068c690373bf605ccd0e.svg" : "http://localhost:3845/assets/47ad4da71baf3d5be71a37c251d4584daf8a87a5.svg"}
-													alt="Toggle"
-													className="size-[36px] transition-transform"
-												/>
+												<ChevronDown className={`size-[36px] text-[#0e5587] transition-transform duration-300 ${openMethod === item.id ? 'rotate-180' : ''}`} />
 											</button>
 											{openMethod === item.id && (
 												<div className="text-[#0e5587] font-normal text-[28px] leading-[40px] tracking-[0.34px] animate-in fade-in slide-in-from-top-2 duration-300 border-t border-[#0e5587]/10 pt-4">

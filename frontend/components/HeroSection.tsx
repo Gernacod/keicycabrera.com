@@ -41,13 +41,13 @@ export default function HeroSection() {
             </div>
 
             {/* Right Image - Keicy Portrait */}
-            <div className="absolute bottom-0 right-0 h-[85%] md:h-[90%] flex items-end justify-end pointer-events-none w-full max-w-[480px] pt-[120px]">
+            <div className="absolute bottom-0 right-[10%] md:right-[20%] lg:right-[25%] h-[85%] md:h-[90%] flex items-end justify-center pointer-events-none w-full max-w-[480px] pt-[120px]">
                 <div className="relative w-full h-full">
                     <Image
                         src="/Keicy Portraits 2-8 1.png"
                         alt="Keicy Cabrera - Consultora Internacional"
                         fill
-                        className="object-contain object-right-bottom"
+                        className="object-contain object-bottom"
                         priority
                     />
                 </div>

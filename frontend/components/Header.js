@@ -138,12 +138,38 @@ const Header = () => {
                 {navLinks.map((link) => {
                     const isDropdown = link.label === 'Consultorías' || link.label === 'Recursos gratuitos';
 
+                    // Determine if the current link or its sub-links are active
+                    let isActive = false;
+                    if (link.href === '/') {
+                        isActive = pathname === '/';
+                    } else if (link.label === 'Consultorías') {
+                        isActive = pathname === '/consultoria' || pathname === '/cursosyclases';
+                    } else if (link.label === 'Recursos gratuitos') {
+                        const subPaths = [
+                            '/recursos-gratuitos',
+                            '/planificatu2025',
+                            '/diagnosticocumplimiento',
+                            '/ebooksubedenivel',
+                            '/ebookrecaudacion',
+                            '/ebookdisenodeproyectos',
+                            '/ebookreportes'
+                        ];
+                        isActive = subPaths.some(p => pathname.startsWith(p));
+                    } else {
+                        isActive = pathname.startsWith(link.href);
+                    }
+
                     const linkContent = (
                         <div className="relative group cursor-pointer py-1">
-                            <span className={`relative z-10 font-bold text-[18px] font-['Red_Hat_Display'] transition-colors ${useWhiteText ? 'text-white' : 'text-[#184476]'} group-hover:text-[#0a8fa4]`}>
+                            <span className={`relative z-10 font-bold text-[18px] font-['Red_Hat_Display'] transition-colors ${isActive
+                                ? (useWhiteText ? 'text-white' : 'text-[#0a8fa4]')
+                                : (useWhiteText ? 'text-white' : 'text-[#184476]')
+                                } group-hover:text-[#0a8fa4]`}>
                                 {link.label}
                             </span>
-                            <div className={`absolute bottom-[-4px] left-0 w-full h-[2.5px] ${useWhiteText ? 'bg-white' : 'bg-[#0a8fa4]'} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`} />
+                            <div className={`absolute bottom-[-8px] left-0 w-full h-[3px] ${useWhiteText ? 'bg-white' : 'bg-[#0a8fa4]'
+                                } transition-transform duration-300 origin-left ${isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+                                }`} />
                         </div>
                     );
 

@@ -36,15 +36,6 @@ npm install
 npm run dev
 ```
 
-## 🌐 URLs de Producción
-
-- **Frontend**: Desplegado en Vercel
-- **Backend**: https://keicy-backend.onrender.com
-
-## 👤 Autor
-
-Alexander Nieves (@alexandernieves)
-
 ## 📄 Licencia
 
 ISC

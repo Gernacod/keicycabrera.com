@@ -43,9 +43,18 @@ app.use((req, res, next) => {
 });
 
 // MongoDB Connection
-mongoose.connect(process.env.MONGODB_URI)
+mongoose.connect(process.env.MONGODB_URI, {
+    serverSelectionTimeoutMS: 5000,
+})
     .then(() => console.log('✅ MongoDB Connected Successfully'))
-    .catch(err => console.error('❌ MongoDB Connection Error:', err));
+    .catch(err => {
+        console.error('❌ MongoDB Connection Error:', err.message);
+        if (process.env.MONGODB_URI) {
+            console.error('URI being used:', process.env.MONGODB_URI.replace(/:([^:@]+)@/, ':<hidden_password>@'));
+        } else {
+            console.error('MONGODB_URI is undefined!');
+        }
+    });
 
 // Routes
 app.use('/api/auth', require('./routes/auth'));
